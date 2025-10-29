@@ -1,6 +1,8 @@
 from service import register, login, log_out,add_todo,update_admin_role,get_user_todo
 from utils import Response
 from db import cur, auto_commit
+import logging 
+
 
 
 
@@ -56,6 +58,24 @@ def main_menu():
 
         else:
             print("\nInvalid choice. Please enter a number from 1 to 7.")
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+
+
+
+logging.basicConfig(
+    level=logging.INFO,               
+    format="%(asctime)s - %(levelname)s - %(message)s",  
+    filename="app.log",               
+    filemode="a"                      
+)
+
+
+logging.info("Программа запущена")
+logging.warning("Что-то может пойти не так")
+logging.error("Ошибка при выполнении")
 
 
 if __name__ == "__main__":
