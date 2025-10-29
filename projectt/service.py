@@ -4,7 +4,19 @@ from db import cur, auto_commit
 from models import User, TodoType
 from service import auto_commit
 session = Session()
+from service import log_add_task, log_error
+from collections import namedtuple
 
+try:
+    log_add_task("Ali", "Python darsini tugatish")
+except Exception as e:
+    log_error(str(e))
+
+Todo = namedtuple("Todo", ["id", "title", "status"])
+
+task1 = Todo(1, "Python o‘rganish", "pending")
+print(task1.title)  # Python o‘rganish
+import logging
 
 
 
@@ -31,6 +43,15 @@ def login(username : str, password : str):
     return Response('you successfully logged in')
 
 
+
+
+Todo = namedtuple("Todo", ["id", "title", "status"])
+
+task1 = Todo(1, "Python o‘rganish", "pending")
+print(task1.title)  # Python o‘rganish
+
+
+
 def log_out():
     if session.session:
         session.session = None
@@ -47,6 +68,13 @@ def register(username, password, role):
     """, (username, hash_password(password), role))
 
     return Response("User registered successfully", 201)
+
+
+Config = namedtuple("Config", ["debug", "version", "db_name"])
+
+config = Config(True, "1.0.0", "todo_db")
+print(config.db_name)  # todo_db
+
 
 
 
@@ -107,3 +135,9 @@ def get_user_todo():
         print(f"ID: {todo_id} | Title: {title} | Description: {description or '-'} | Type: {todo_type}")
 
     return Response("Todos successfully retrieved.", 200)
+
+User = namedtuple("User", ["username", "email", "role"])
+
+u1 = User("ali", "ali@gmail.com", "admin")
+print(u1.role)  
+

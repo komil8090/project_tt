@@ -73,9 +73,9 @@ logging.basicConfig(
 )
 
 
-logging.info("Программа запущена")
-logging.warning("Что-то может пойти не так")
-logging.error("Ошибка при выполнении")
+logging.info("Program running smoothly")
+logging.warning("Something might go wrong")
+logging.error("Error occurred during execution")
 
 
 if __name__ == "__main__":
