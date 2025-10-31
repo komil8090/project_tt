@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Проверка региона (Узбек)</title>
+  <link rel="stylesheet" href="{% static 'myapp/styles.css' %}">
+</head>
+<body class="page">
+  <main class="card">
+    <h1>Проверить регион: входит ли в Узбекистан</h1>
+
+    <form id="regionForm">
+      <label>Название региона:
+        <input type="text" name="region" id="regionInput" placeholder="например: Samarqand / Tashkent" />
+      </label>
+
+      <button type="submit" class="btn">Проверить</button>
+    </form>
+
+    <div id="regionResult" class="result" aria-live="polite"></div>
+  </main>
+
+  <script>
+    const form = document.getElementById('regionForm');
+    const out = document.getElementById('regionResult');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      out.textContent = "Отправка...";
+      const formData = new FormData(form);
+      const resp = await fetch("", { method: "POST", body: formData });
+      const data = await resp.json().catch(()=> null);
+      if (!data) { out.textContent = "Ошибка парсинга ответа."; return; }
+      if (!resp.ok) { out.textContent = data.message || "Ошибка сервера"; return; }
+      out.innerHTML = data.exists
+        ? `<span class="ok">Регион найден: ${data.normalized} ✅</span>`
+        : `<span class="no">Регион не найден: ${data.normalized} 🚫</span>`;
+    });
+  </script>
+</body>
+</html>

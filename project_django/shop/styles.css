@@ -1,0 +1,52 @@
+/* static/myapp/styles.css */
+body.page {
+  font-family: Inter, system-ui, -apple-system, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #fafafa, #f5f7fb);
+  margin: 0;
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  color: #111827;
+}
+
+.card {
+  width: 100%;
+  max-width: 520px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(16,24,40,0.06);
+  padding: 24px;
+}
+
+h1 { font-size: 20px; margin: 0 0 16px; }
+
+label { display: block; margin-bottom: 12px; font-size: 14px; }
+input[type="text"], input[type="number"], input[type="date"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 6px;
+  border: 1px solid #e6e9ef;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.or { text-align: center; margin: 8px 0; color: #8b8f98; font-size: 13px; }
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.result { margin-top: 16px; font-size: 15px; }
+.ok { color: #059669; font-weight: 700; }
+.no { color: #dc2626; font-weight: 700; }
